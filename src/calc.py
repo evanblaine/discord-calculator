@@ -1,5 +1,9 @@
+import datetime
+import sys
+
 import discord
 from discord.ext import commands
+
 from config import *
 
 
@@ -127,6 +131,9 @@ class CalculatorBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    async def on_ready(self):
+        sys.stdout.write(f"\r{bot.user.name} has joined\n")
+        sys.stdout.write(f"\r{datetime.datetime.now()}\n")
 
 bot = CalculatorBot()
 
