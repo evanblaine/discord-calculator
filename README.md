@@ -1,10 +1,8 @@
 ## Discord Calculator
 
-#
+#### An attempt at an operation calculator within Discord
 
-#### `An attempt at an operation calculator within Discord`
-
-#### `Uses Pycord and python 3.9+`
+#### Uses Pycord and python 3.9+
 
 #
 
