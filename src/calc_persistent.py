@@ -72,6 +72,16 @@ class Calculator(discord.ui.View):
             if self.message[-1] not in self.operators:
                 self.message += button.label
                 await interaction.response.edit_message(content=f"`{self.message}`")
+            elif self.message[-1] == "-":
+                try:
+                    if self.message[-2] != "-":
+                        self.message += button.label
+                        await interaction.response.edit_message(content=f"`{self.message}`")
+                except IndexError as i:
+                    print(i)
+        else:
+            self.message += button.label
+            await interaction.response.edit_message(content=f"`{self.message}`")
 
     @discord.ui.button(label="*", style=discord.ButtonStyle.grey, custom_id="button_multiply")
     async def _multiply(self, button: discord.ui.Button, interaction: discord.Interaction):
@@ -140,7 +150,9 @@ class CalculatorBot(commands.Bot):
         sys.stdout.write(f"\r{bot.user.name} has joined\n")
         sys.stdout.write(f"\r{datetime.datetime.now()}\n")
 
+
 bot = CalculatorBot()
+
 
 @bot.slash_command()
 async def calculator(ctx: commands.Context):
